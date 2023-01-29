@@ -4,7 +4,6 @@
 }
 
 .main-wrapper {
-  margin: auto;
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
   justify-content: space-between;
@@ -28,12 +27,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  max-height: 50%;
+  /* overflow: auto; */
+  background-color: lightblue;
+  max-height: 400px;
 }
 
 .information-container p {
-  background-color: lightblue;
-  padding: 2rem;
+  max-height: 400px;
+  overflow: auto;
+  padding: 1em;
+  margin: 0;
+  text-align: center;
 }
 
 .fa-solid {
@@ -43,4 +47,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
   /* display: none; */
+}
+
+@media screen and (max-width: 800px) {
+  .main-wrapper {
+    grid-template-columns: 1fr;
+  }
 }
