@@ -11,17 +11,59 @@ player1Table.addEventListener("click", (e) => {
   clickedBtn.append(i);
 });
 
-function randomNumber(){
+function randomNumberLetter(){
   let x = Math.floor((Math.random() * 10));
   return x;
 }
 
-function generateLetterShip(){
-  const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
-  letters[randomNumber()];
+function randomNumber(){
+  let x = Math.floor((Math.random() * 10) + 1);
+  return x;
 }
 
-class Ship {
-  letter = "";
-  number = "";
+function generateLetterShip(){
+  const num = randomNumberLetter();
+  const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
+  const position = [];
+  if(num === 9 || num === 8){
+    position.push(letters[num]);
+    position.push(letters[num - 1]);
+    position.push(letters[num - 2]);
+  } else {
+    position.push(letters[num]);
+    position.push(letters[num + 1]);
+    position.push(letters[num + 2]);
+  }
+  return position;
 }
+
+function generateNumberShip(){
+  const num = randomNumber();
+  const position = [];
+  if(num === 10 || num === 9){
+    position.push(num);
+    position.push(num - 1);
+    position.push(num - 2);
+  } else {
+    position.push(num);
+    position.push(num + 1);
+    position.push(num + 2);
+  }
+  return position;
+}
+
+class VerticalShip {
+  letters = generateLetterShip();
+  number = randomNumber();
+}
+
+const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
+
+class HorizontalShip {
+  letter = letters[randomNumber()];
+  numbers = generateNumberShip();
+}
+
+console.log(new VerticalShip);
+console.log(new VerticalShip);
+console.log(new HorizontalShip);
