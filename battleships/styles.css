@@ -1,3 +1,7 @@
+header p {
+ text-align: center;
+}
+
 .heading {
     text-align: center;
     margin-block-end: 5rem;
@@ -46,4 +50,12 @@
     left: 50%;
     transform: translate(-50%, -50%);
     /* display: none; */
+  }
+
+  .hidden {
+    display: none;
+  }
+  
+  .hit {
+    display: initial;
   }
