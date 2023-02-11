@@ -6,6 +6,12 @@ header p {
     text-align: center;
     margin-block-end: 5rem;
   }
+
+  .difficulty-container {
+    display: flex;
+    justify-content: center;
+    margin-block-end: 4rem;
+  }
   
   .main-wrapper {
     display: flex;
@@ -49,6 +55,7 @@ header p {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    pointer-events: none;
     /* display: none; */
   }
 

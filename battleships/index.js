@@ -1,10 +1,28 @@
 const player1Table = document.getElementById('player1-table');
 const tracker = document.getElementById("ship-tracker");
+const difficultyContainer = document.getElementById("difficulty-selector");
 
 let hits = 4;
-let tries = 50;
+let tries;
+
+difficultyContainer.addEventListener("click", (e) => {
+    if(e.target.id === "easy-button"){
+        tries = 75;
+        difficultyContainer.innerHTML = `<p>You have <span id="try-tracker">${tries}</span> tries left</p>`;
+        player1Table.classList.remove("hidden");
+    } else if (e.target.id === "medium-button"){
+        tries = 50;
+        difficultyContainer.innerHTML = `<p>You have <span id="try-tracker">${tries}</span> tries left</p>`;
+        player1Table.classList.remove("hidden");
+    } else if (e.target.id === "hard-button"){
+        tries = 35;
+        difficultyContainer.innerHTML = `<p>You have <span id="try-tracker">${tries}</span> tries left</p>`;
+        player1Table.classList.remove("hidden");
+    }
+});
 
 player1Table.addEventListener('click', (e) => {
+    const tryTracker = document.getElementById("try-tracker");
     const clickedBtn = e.target;
     console.log(clickedBtn);
 
@@ -29,6 +47,12 @@ player1Table.addEventListener('click', (e) => {
         i.classList.add('fa-solid');
         i.classList.add('fa-xmark');
         clickedBtn.append(i);
+        if(tries <= 1){
+            player1Table.classList.add("hidden");
+            console.log("alex make this work!!!");
+        }
+        tries = tries - 1;
+        tryTracker.textContent = `${tries}`;
     }
     if(ship1.hits === 0){
         hits = hits - 1;
@@ -44,6 +68,9 @@ player1Table.addEventListener('click', (e) => {
         Object.assign(ship4, ship4.hits = 1);
     }
     tracker.textContent = `${hits}`;
+    if(hits === 0){
+        console.log("winning screen");
+    }
 });
 
 
@@ -56,9 +83,6 @@ class Ships {
         this.letters = letters;
         this.numbers = numbers;
     }
-
-
-
 }
 
 class ShipOne extends Ships {
@@ -251,11 +275,7 @@ function generateRandomNumbers1() {
     const num = numbers[randomIndex]
     numbers.splice(randomIndex, 1)
     return num;
-
 }
-
-
-
 // Declare Variables as new Ships
 
 const ship1 = new ShipOne("Destroyer", 2, generateRandomLetters1(), generateRandomNumbers1());

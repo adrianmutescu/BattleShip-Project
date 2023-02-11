@@ -33,11 +33,23 @@
     <header>
       <h1 class="heading">Battleships</h1>
       <p>You have <span id="ship-tracker">4</span> ships left to hit</p>
-      <p>You have <span id="try-tracker">100</span> tries left</p>
+      <div class="difficulty-container" id="difficulty-selector">
+        <button id="easy-button">
+          Easy
+        </button>
+        <button id="medium-button">
+          Medium
+        </button>
+        <button id="hard-button">
+          Hard
+        </button>
+        <!-- <p>You have <span id="try-tracker">50</span> tries left</p> -->
+      </div>
+
     </header>
     <main>
       <section class="main-wrapper">
-        <table id="player1-table" class="table-container">
+        <table id="player1-table" class="table-container hidden">
           <tr>
             <th class="numbers"></th>
             <th class="numbers">1</th>
@@ -185,13 +197,12 @@
         </table>
 
         <p>
-          Game Rules - Each player places the 5 ships somewhere on their board.
-          The ships can only be placed vertically or horizontally. Diagonal
+          Game Rules - 4 ships have been placed somewhere on the board.
+          The ships can only be placed vertically. Diagonal
           placement is not allowed. No part of a ship may hang off the edge of
           the board. Ships may not overlap each other. No ships may be placed on
-          another ship. Once the guessing begins, the players may not move the
-          ships. The 5 ships are: Carrier (occupies 5 spaces), Battleship (4),
-          Cruiser (3), Submarine (3), and Destroyer (2).
+          another ship. The 4 ships are: Carrier (occupies 5 spaces), Battleship (4),
+          Cruiser (3) and Destroyer (2).
         </p>
       </section>
     </main>
