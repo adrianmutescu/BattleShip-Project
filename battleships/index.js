@@ -6,15 +6,15 @@ let hits = 4;
 let tries;
 
 difficultyContainer.addEventListener("click", (e) => {
-    if(e.target.id === "easy-button"){
+    if (e.target.id === "easy-button") {
         tries = 75;
         difficultyContainer.innerHTML = `<p>You have <span id="try-tracker">${tries}</span> tries left</p>`;
         player1Table.classList.remove("hidden");
-    } else if (e.target.id === "medium-button"){
+    } else if (e.target.id === "medium-button") {
         tries = 50;
         difficultyContainer.innerHTML = `<p>You have <span id="try-tracker">${tries}</span> tries left</p>`;
         player1Table.classList.remove("hidden");
-    } else if (e.target.id === "hard-button"){
+    } else if (e.target.id === "hard-button") {
         tries = 35;
         difficultyContainer.innerHTML = `<p>You have <span id="try-tracker">${tries}</span> tries left</p>`;
         player1Table.classList.remove("hidden");
@@ -26,18 +26,32 @@ player1Table.addEventListener('click', (e) => {
     const clickedBtn = e.target;
     console.log(clickedBtn);
 
-    if(clickedBtn.firstChild){
+    let hitSound = new Audio("./audio/hit.mp3");
+    let destroySound = new Audio("./audio/destroy.mp3");
+
+    hitSound.addEventListener('ended', function () {
+        this.currentTime = 0;
+        this.pause();
+    }, false);
+
+    destroySound.addEventListener('ended', function () {
+        this.currentTime = 0;
+        this.pause();
+    }, false);
+
+    if (clickedBtn.firstChild) {
         clickedBtn.firstChild.classList.add("hit");
+        hitSound.play();
         ships.forEach((ship) => {
-            if(ship.includes(clickedBtn.id)){
+            if (ship.includes(clickedBtn.id)) {
                 console.log(ship.length);
-                if(ship.length === 2){
+                if (ship.length === 2) {
                     ship1.shipHit();
-                } else if(ship.length === 3){
+                } else if (ship.length === 3) {
                     ship2.shipHit();
-                } else if(ship.length === 4){
+                } else if (ship.length === 4) {
                     ship3.shipHit();
-                } else if(ship.length === 5){
+                } else if (ship.length === 5) {
                     ship4.shipHit();
                 }
             }
@@ -47,31 +61,39 @@ player1Table.addEventListener('click', (e) => {
         i.classList.add('fa-solid');
         i.classList.add('fa-xmark');
         clickedBtn.append(i);
-        if(tries <= 1){
+        if (tries <= 1) {
             player1Table.classList.add("hidden");
             console.log("alex make this work!!!");
         }
         tries = tries - 1;
         tryTracker.textContent = `${tries}`;
     }
-    if(ship1.hits === 0){
+    if (ship1.hits === 0) {
         hits = hits - 1;
+        destroySound.play();
         Object.assign(ship1, ship1.hits = 1);
-    } else if (ship2.hits === 0){
+    } else if (ship2.hits === 0) {
         hits = hits - 1;
+        destroySound.play();
         Object.assign(ship2, ship2.hits = 1);
-    } else if (ship3.hits === 0){
+    } else if (ship3.hits === 0) {
         hits = hits - 1;
+        destroySound.play();
         Object.assign(ship3, ship3.hits = 1);
-    } else if (ship4.hits === 0){
+    } else if (ship4.hits === 0) {
         hits = hits - 1;
+        destroySound.play();
         Object.assign(ship4, ship4.hits = 1);
     }
     tracker.textContent = `${hits}`;
-    if(hits === 0){
+    if (hits === 0) {
         console.log("winning screen");
     }
+
+
 });
+
+
 
 
 // Classes 
@@ -95,7 +117,7 @@ class ShipOne extends Ships {
         for (const letter of this.letters) {
             str.push(`${letter}${this.numbers}`)
         }
-        for(const location of str){
+        for (const location of str) {
             const i = document.createElement("i");
             i.classList.add("fa-solid");
             i.classList.add("fa-ship");
@@ -105,7 +127,7 @@ class ShipOne extends Ships {
         }
         return str;
     }
-    shipHit(){
+    shipHit() {
         this.hits = this.hits - 1;
     }
 
@@ -121,7 +143,7 @@ class ShipTwo extends Ships {
         for (const letter of this.letters) {
             str.push(`${letter}${this.numbers}`)
         }
-        for(const location of str){
+        for (const location of str) {
             const i = document.createElement("i");
             i.classList.add("fa-solid");
             i.classList.add("fa-ship");
@@ -131,7 +153,7 @@ class ShipTwo extends Ships {
         }
         return str;
     }
-    shipHit(){
+    shipHit() {
         this.hits = this.hits - 1;
     }
 }
@@ -146,7 +168,7 @@ class ShipThree extends Ships {
         for (const letter of this.letters) {
             str.push(`${letter}${this.numbers}`)
         }
-        for(const location of str){
+        for (const location of str) {
             const i = document.createElement("i");
             i.classList.add("fa-solid");
             i.classList.add("fa-ship");
@@ -156,7 +178,7 @@ class ShipThree extends Ships {
         }
         return str;
     }
-    shipHit(){
+    shipHit() {
         this.hits = this.hits - 1;
     }
 }
@@ -171,7 +193,7 @@ class ShipFour extends Ships {
         for (const letter of this.letters) {
             str.push(`${letter}${this.numbers}`)
         }
-        for(const location of str){
+        for (const location of str) {
             const i = document.createElement("i");
             i.classList.add("fa-solid");
             i.classList.add("fa-ship");
@@ -181,7 +203,7 @@ class ShipFour extends Ships {
         }
         return str;
     }
-    shipHit(){
+    shipHit() {
         this.hits = this.hits - 1;
     }
 }
@@ -196,7 +218,7 @@ class ShipFive extends Ships {
         for (const letter of this.letters) {
             str.push(`${letter}${this.numbers}`)
         }
-        for(const location of str){
+        for (const location of str) {
             const i = document.createElement("i");
             i.classList.add("fa-solid");
             i.classList.add("fa-ship");
@@ -206,7 +228,7 @@ class ShipFive extends Ships {
         }
         return str;
     }
-    shipHit(){
+    shipHit() {
         this.hits = this.hits - 1;
     }
 }
