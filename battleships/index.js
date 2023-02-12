@@ -67,7 +67,7 @@ player1Table.addEventListener('click', (e) => {
   );
 
   if (clickedBtn.firstChild) {
-    if(clickedBtn.firstChild.classList.contains("hit") || clickedBtn.classList.contains("numbers") || clickedBtn.classList.contains("letters")){
+    if(clickedBtn.firstChild.classList.contains("hit") || clickedBtn.classList.contains("numbers") || clickedBtn.classList.contains("letters") || clickedBtn.firstChild.classList.contains("fa-xmark")){
       return;
     }
     clickedBtn.firstChild.classList.add('hit');
