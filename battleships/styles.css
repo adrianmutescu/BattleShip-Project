@@ -1,32 +1,77 @@
+body {  
+  font-family: 'Oswald', sans-serif;
+  background-color: #4cf8ed;
+  background-image: url("/assets/background.jpg");
+  background-size: 100%;
+  min-height: min-content;
+  background-repeat: no-repeat;
+}
+
 header p {
  text-align: center;
-}
+}   
 
 .heading {
     text-align: center;
-    margin-block-end: 5rem;
+    font-weight: 700;
+    font-size: 8rem;
+    text-shadow: rgb(0, 0, 0) 2.5px 0 2px;
+    margin-block-end: 1rem;
   }
 
+.tracker {
+  font-size: 3.5rem;
+  font-weight: 500;
+  text-shadow: rgb(0 0 0) 1px 0 1px;
+  margin-block-end: 0.5rem;
+}
+
   .difficulty-container {
-    display: flex;
+    display: flex;  
+    flex-direction: column;
     justify-content: center;
-    margin-block-end: 4rem;
+  }
+
+  .difficulty-container p {
+    font-size: 3.5rem;
+    font-weight: 500;
+    text-shadow: rgb(0, 0, 0) 1px 0 1px;
+    margin-block-end: 0.5rem;
+    }
+    /* margin-block-end: 2rem; */
+  .difficulty-container button {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
   
   .main-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
     gap: 5rem;
     margin-inline: 2rem;
   }
   
   .table-container {
-    width: 50%;
+    width: 35%;
     /* display: none; */
+  }
+
+  .numbers {
+    font-size: 3rem;
+    font-weight: 700;
+        text-shadow: rgb(255, 255, 255) 2px 0 3px;
+  }
+
+  .letters {
+    font-size: 1rem;
+    font-weight: 700;
+        text-shadow: rgb(255, 255, 255) 2px 0 3px;
   }
   
   .table-container button {
+
     position: relative;
     width: 100%;
     padding-block: 50%;
@@ -59,10 +104,48 @@ header p {
     /* display: none; */
   }
 
+  .rules {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-shadow: rgb(255, 255, 255) 2.5px 0 2px;
+  }
+
   .hidden {
     display: none;
+  }
+
+  .absolute {
+    display: absolute;
   }
   
   .hit {
     display: initial;
   }
+
+  .difficulty-button{
+    width: 30%;
+    margin: auto;
+    padding: 1.5rem;
+    font-size: 3rem;
+    font-weight: 500;
+  }
+
+  .finish-container {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      font-weight: 500;
+      align-content: center;
+      text-align: center;
+      background-color: hsl(188deg 62% 57% / 79%);
+      outline: 0.5rem ridge rgb(255, 255, 255);
+      border-radius: 1rem;
+      width: 40vh;
+      font-size: 2.5rem;
+      height: 10vh;
+      justify-content: space-evenly;
+      margin: auto;
+      margin-block-start: 5rem;
+  }
+  

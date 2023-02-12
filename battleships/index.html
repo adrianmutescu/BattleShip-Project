@@ -12,8 +12,9 @@
     />
 
     <!-- FONT -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -31,24 +32,41 @@
   </head>
   <body>
     <header>
-      <h1 class="heading">Battleships</h1>
-      <p>You have <span id="ship-tracker">4</span> ships left to hit</p>
+      <h1 class="heading">BATTLESHIPS</h1>
+      <p class="tracker hidden" id="tracker-info">You have <span id="ship-tracker">4</span> ships left to hit</p>
+
       <div class="difficulty-container" id="difficulty-selector">
-        <button id="easy-button">
+        <p>Click a difficulty below to start the game.</p>
+        <button id="easy-button" class="difficulty-button">
           Easy
         </button>
-        <button id="medium-button">
+        <button id="medium-button" class="difficulty-button">
           Medium
         </button>
-        <button id="hard-button">
+        <button id="hard-button" class="difficulty-button">
           Hard
         </button>
-        <!-- <p>You have <span id="try-tracker">50</span> tries left</p> -->
       </div>
 
     </header>
     <main>
       <section class="main-wrapper">
+
+        <ul class="rules">
+          Game Rules and Information:
+          <li>4 ships have been placed somewhere on the board.</li>
+          <li>The ships have only been placed vertically.</li>
+          <li>The Ships do not overlap each other.</li>
+          <li>Hit all of the ships without running out of tries to win.</li>
+            <ul class="ship-sizes">
+              The 4 ships are:
+              <li>Carrier (occupies 5 spaces)</li>
+              <li>Battleship (occupies 4 spaces)</li>
+              <li>Cruiser (occupies 3 spaces)</li>
+              <li>Destroyer (occupies 2 spaces)</li>
+            </ul>
+        </ul>
+
         <table id="player1-table" class="table-container hidden">
           <tr>
             <th class="numbers"></th>
@@ -196,14 +214,16 @@
           </tr>
         </table>
 
-        <p>
-          Game Rules - 4 ships have been placed somewhere on the board.
-          The ships can only be placed vertically. Diagonal
-          placement is not allowed. No part of a ship may hang off the edge of
-          the board. Ships may not overlap each other. No ships may be placed on
-          another ship. The 4 ships are: Carrier (occupies 5 spaces), Battleship (4),
-          Cruiser (3) and Destroyer (2).
-        </p>
+        <div id="winner" class="hidden">
+          Congratulations! You won!
+          <button id="winner-button" class="play-again">Play Again?</button>
+        </div>
+
+        <div id="loser"  class="hidden">
+          Tough luck! You've lost.
+          <button id="loser-button" class="play-again">Try Again?</button>
+        </div>
+
       </section>
     </main>
   </body>
