@@ -66,7 +66,6 @@ player1Table.addEventListener('click', (e) => {
     false,
   );
 
-  console.log(clickedBtn);
   if (clickedBtn.firstChild) {
     if(clickedBtn.firstChild.classList.contains("hit") || clickedBtn.classList.contains("numbers") || clickedBtn.classList.contains("letters")){
       return;
