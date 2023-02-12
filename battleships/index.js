@@ -44,7 +44,6 @@ difficultyContainer.addEventListener('click', (e) => {
 player1Table.addEventListener('click', (e) => {
   const tryTracker = document.getElementById('try-tracker');
   const clickedBtn = e.target;
-  console.log(clickedBtn);
 
   let hitSound = new Audio('./audio/hit.mp3');
   let destroySound = new Audio('./audio/destroy.mp3');
@@ -67,12 +66,15 @@ player1Table.addEventListener('click', (e) => {
     false,
   );
 
+  console.log(clickedBtn);
   if (clickedBtn.firstChild) {
+    if(clickedBtn.firstChild.classList.contains("hit") || clickedBtn.classList.contains("numbers") || clickedBtn.classList.contains("letters")){
+      return;
+    }
     clickedBtn.firstChild.classList.add('hit');
     hitSound.play();
     ships.forEach((ship) => {
       if (ship.includes(clickedBtn.id)) {
-        console.log(ship.length);
         if (ship.length === 2) {
           ship1.shipHit();
         } else if (ship.length === 3) {
@@ -385,15 +387,9 @@ const ship4 = new ShipFour(
   generateRandomNumbers1(),
 );
 
-console.log(ship1.placeShips1());
-console.log(ship2.placeShips1());
-console.log(ship3.placeShips1());
-console.log(ship4.placeShips1());
-
 const ships = [
   ship1.placeShips1(),
   ship2.placeShips1(),
   ship3.placeShips1(),
   ship4.placeShips1(),
 ];
-console.log(ships);
