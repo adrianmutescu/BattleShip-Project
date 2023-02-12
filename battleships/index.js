@@ -24,17 +24,20 @@ difficultyContainer.addEventListener('click', (e) => {
     tries = 75;
     difficultyContainer.innerHTML = `<p>You have <span id="try-tracker">${tries}</span> tries left</p>`;
     player1Table.classList.remove('hidden');
+    rules.classList.add('hidden');
     trackerPara.classList.remove('hidden');
   } else if (e.target.id === 'medium-button') {
     tries = 50;
     difficultyContainer.innerHTML = `<p>You have <span id="try-tracker">${tries}</span> tries left</p>`;
     player1Table.classList.remove('hidden');
     trackerPara.classList.remove('hidden');
+    rules.classList.add('hidden');
   } else if (e.target.id === 'hard-button') {
     tries = 35;
     difficultyContainer.innerHTML = `<p>You have <span id="try-tracker">${tries}</span> tries left</p>`;
     player1Table.classList.remove('hidden');
     trackerPara.classList.remove('hidden');
+    rules.classList.add('hidden');
   }
 });
 
